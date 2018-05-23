@@ -32,38 +32,33 @@ void dijkstras(vector< pair<int,int> > graph[],int s)
 
 	while(!heap.empty())
 	{
+
 		pair<int,int> temp=*(heap.begin());
 		heap.erase(heap.begin());
+
 		int tempDist=temp.first;
 		int tempVer=temp.second;
 
-		for(vector< pair<int,int> >::iterator i=graph[tempVer].begin();i!=graph[tempVer].end();++i)
+		if(visited[tempVer]==flase)
 		{
-			int nDist=(graph[tempVer][(*i).second]).first;
 
-			if(dist[(*i).second]>dist[tempVer]+nDist)
+			for(vector< pair<int,int> >::iterator i=graph[tempVer].begin();i!=graph[tempVer].end();++i)
 			{
-				dist[(*i).second]=dist[tempVer]+nDist;
-				pair<int,int> temp2=make_pair(dist[(*i).second],(*i).second);
-				heap.insert(temp2);
+				int nDist=(graph[tempVer][(*i).second]).first;
+
+				if(dist[(*i).second]>dist[tempVer]+nDist)
+				{
+					dist[(*i).second]=dist[tempVer]+nDist;
+					pair<int,int> temp2=make_pair(dist[(*i).second],(*i).second);
+					heap.insert(temp2);
+				}
 			}
+
 		}
-
-
 
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /*
