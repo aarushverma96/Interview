@@ -65,7 +65,7 @@ void dijkstras(vector< pair<int,int> > graph[],int s)
 1. set dist of all vertice =inf source dist=0
 2. push source vertex in a min-prority queue(dist,vertex)
 3. extract vertex with min-dist from priority queue
-4. updat distances of all neighbouring vertextes then push verteicex
+4. update distances of all neighbouring vertextes then push verteicex
 5. if poped vertex id visited do noting 
 6. apply same algo till queue is empty
 */
@@ -76,4 +76,3 @@ priority queue
 visited array
 graph
 */
-
