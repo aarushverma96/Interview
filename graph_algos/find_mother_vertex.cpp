@@ -4,6 +4,8 @@
 	from the set of last finished vertices call dfs and check reachability of everynode form that
 */
 
+/*complexity O(V+E)*/
+
 
 #include <bits/stdc++.h>
 
