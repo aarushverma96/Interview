@@ -10,6 +10,7 @@ int main()
 int V;
 bool visited[100];
 bool recStack[100];
+stack<int> s;
 
 bool isCycle(vector<int> graph[])
 {
@@ -21,6 +22,7 @@ bool isCycle(vector<int> graph[])
     if(visited[i]==false)
     {
       res=cycle(graph,i);
+      //print content of stack over here
     }
   }
   return res;
@@ -31,6 +33,7 @@ int cycle(std::vector<int> graph[],int v)
 
   visited[v]=true;
   recStack[v]=true;
+  s.push(v);
   for (int i=0; i<graph[v].size(); i++)
   {
     if ( !visited[i] && cycle(graph,graph[v][i]) )
