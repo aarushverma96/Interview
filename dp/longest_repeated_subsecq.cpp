@@ -26,10 +26,44 @@ int lrs(vector<char> X)
     }
   }
 
-  return LRS[lenX][lenX];
+  int len =LRS[lenX][lenX];
+  vector<char> res;
 
+  int i=lenX,j=lenX;
 
+  while(i>0,j>0)
+  {
+    if(LRS[i][j] == LRS[i-1][j-1] + 1)
+    {
+      res.push_back(X[i-1]);
+      i--;
+      j--;
+
+    }
+    else
+    {
+      if(LRS[i][j]=LRS[i-1][j])
+      {
+        i--;
+      }
+      else
+      {
+        j--;
+      }
+    }
+  }
+
+  reverse(res.begin(),res.end());
+
+  for (int i = 0; i < res.size(); i++) {
+    cout << res[i];
+  }
+  cout << endl;
+
+  return len;
 }
+
+
 
 int main()
 {
