@@ -9,7 +9,7 @@ bool isSubset(vector<int> set,int sum)
   int n=set.size();
   bool sub[n+1][sum+1];
 
-  for (int i = 1; i < n; i++)
+  for (int i = 1; i <= n; i++)
   {
     sub[i][0]=true;
   }
@@ -19,24 +19,17 @@ bool isSubset(vector<int> set,int sum)
       sub[0][i]=false;
   }
 
-  for (int i = 0; i <= n; i++)
+  for (int i = 1; i <= n; i++)
   {
     for (int j = 1; j <= sum; j++)
     {
-      if(j<i)
+      if(j<set[i-1])
       {
         sub[i][j]=sub[i-1][j];
       }
-      else
+      if(j>=set[i-1])
       {
-        if(sub[i-1][j]==false)
-        {
-          sub[i][j]=sub[i-1][j-set[i]];
-        }
-        else if(sub[i-1][j]==true)
-        {
-          sub[i][j]=true;
-        }
+        sub[i][j]=sub[i-1][j] || sub[i-1][j-set[i-1]];
       }
     }
   }
@@ -46,7 +39,15 @@ bool isSubset(vector<int> set,int sum)
   {
     for (int j = 0; j <=sum ; j++)
     {
-      cout << sub[i][j] << " ";
+      if(sub[i][j]==true)
+      {
+        cout << "t" << " ";
+      }
+      else
+      {
+        cout << "f" << " ";
+      }
+
     }
     cout << endl;
   }
