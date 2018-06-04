@@ -22,9 +22,17 @@ void inOrder(Tree* root,vector<int>& inO)
   }
   inOrder(root->left,inO);
 
-  inO.push_back(temp->val);
+  inO.push_back(root->val);
 
   inOrder(root->right,inO);
+}
+
+void replaceUtil(Tree* root,vector<int> inO,int i)
+{
+  replaceUtil(root->left,inO,i);
+  root->val=inO[i-1]+inO[i+1];
+  i++;
+  replaceUtil(root->right,inO,i);
 }
 
 void replace(Tree* root)
@@ -34,7 +42,6 @@ void replace(Tree* root)
   inOrder(root,inO);
   inO.push_back(0);
 
-  repalceUtil()
-
+  replaceUtil(root,inO,1);
 
 }
